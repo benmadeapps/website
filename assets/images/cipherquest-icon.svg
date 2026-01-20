@@ -1,0 +1,61 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#0f0f1a"/>
+    </linearGradient>
+
+    <!-- Gold gradient -->
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8c56b"/>
+      <stop offset="50%" style="stop-color:#d4a855"/>
+      <stop offset="100%" style="stop-color:#a67c32"/>
+    </linearGradient>
+
+    <!-- Glow filter -->
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="20" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1024" height="1024" fill="url(#bgGradient)"/>
+
+  <!-- Subtle outer ring -->
+  <circle cx="512" cy="512" r="460" fill="none" stroke="#d4a855" stroke-width="8" opacity="0.15"/>
+
+  <!-- Large bold keyhole shape -->
+  <g filter="url(#glow)">
+    <!-- Keyhole circle (top) -->
+    <circle cx="512" cy="380" r="180" fill="url(#goldGradient)"/>
+
+    <!-- Keyhole stem (bottom) -->
+    <path d="M400 420
+             L400 720
+             Q400 780 512 780
+             Q624 780 624 720
+             L624 420 Z"
+          fill="url(#goldGradient)"/>
+  </g>
+
+  <!-- Inner keyhole cutout (the actual hole) -->
+  <circle cx="512" cy="380" r="85" fill="#0f0f1a"/>
+  <path d="M465 400
+           L465 620
+           Q465 660 512 660
+           Q559 660 559 620
+           L559 400 Z"
+        fill="#0f0f1a"/>
+
+  <!-- Eye inside the keyhole circle -->
+  <ellipse cx="512" cy="380" rx="55" ry="35" fill="none" stroke="#d4a855" stroke-width="6" opacity="0.8"/>
+  <circle cx="512" cy="380" r="18" fill="#d4a855" opacity="0.9"/>
+
+  <!-- Subtle sparkle -->
+  <circle cx="555" cy="355" r="8" fill="#fff" opacity="0.7"/>
+</svg>
