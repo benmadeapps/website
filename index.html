@@ -92,17 +92,14 @@
             text-decoration: underline;
         }
         .store-badge {
-            display: inline-block;
-            background: #000;
-            color: #fff;
-            padding: 0.4em 0.8em;
-            border-radius: 6px;
-            font-size: 0.85em;
-            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+        .store-badge img {
+            display: block;
         }
         .store-badge:hover {
-            background: #333;
-            text-decoration: none;
+            opacity: 0.8;
         }
         .coming-soon {
             display: inline-block;
@@ -167,7 +164,7 @@
                 <p class="app-tagline">Decode the mystery.</p>
                 <p class="app-description">A cryptography puzzle game that challenges you to crack ciphers and unlock secrets. Learn classic encryption techniques while solving intriguing puzzles.</p>
                 <div class="app-links">
-                    <span class="coming-soon">Coming to App Store</span>
+                    <a href="https://apps.apple.com/app/id6757944090" class="store-badge" target="_blank" rel="noopener noreferrer"><img src="/assets/images/app-store-badge.svg" alt="Download on the App Store" height="40"></a>
                     <a href="/cipherquest/">Support</a>
                     <a href="/cipherquest/privacy.html">Privacy</a>
                 </div>
