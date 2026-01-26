@@ -33,6 +33,39 @@
             color: #888;
             font-size: 0.95em;
         }
+        .scroll-hint {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1.5em;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            cursor: pointer;
+            animation: bounce 2s infinite;
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+        .scroll-hint:hover {
+            background: #fff;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+        }
+        .scroll-hint.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-8px); }
+            60% { transform: translateX(-50%) translateY(-4px); }
+        }
         .apps {
             display: flex;
             flex-direction: column;
@@ -144,6 +177,20 @@
 
     <div class="apps">
         <div class="app">
+            <img src="/assets/images/singingorbs-icon.png" alt="Singing Orbs" class="app-icon">
+            <div class="app-info">
+                <h2><a href="/singingorbs/">Singing Orbs</a></h2>
+                <p class="app-tagline">Meditative Sound Spheres.</p>
+                <p class="app-description">Transform your screen into a tranquil sound garden. Trace your finger through glowing orbs and create beautiful, harmonious tones that resonate and fade like singing bowls.</p>
+                <div class="app-links">
+                    <a href="https://apps.apple.com/app/id6758194972" class="store-badge" target="_blank" rel="noopener noreferrer"><img src="/assets/images/app-store-badge.svg" alt="Download on the App Store" height="40"></a>
+                    <a href="/singingorbs/">Support</a>
+                    <a href="/singingorbs/privacy.html">Privacy</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="app">
             <img src="/assets/images/minesweeper-icon.png" alt="Minesweeper: Pure Logic" class="app-icon">
             <div class="app-info">
                 <h2><a href="/minesweeper/">Minesweeper: Pure Logic</a></h2>
@@ -170,24 +217,36 @@
                 </div>
             </div>
         </div>
-
-        <div class="app">
-            <img src="/assets/images/singingorbs-icon.png" alt="Singing Orbs" class="app-icon">
-            <div class="app-info">
-                <h2><a href="/singingorbs/">Singing Orbs</a></h2>
-                <p class="app-tagline">Meditative Sound Spheres.</p>
-                <p class="app-description">Transform your screen into a tranquil sound garden. Trace your finger through glowing orbs and create beautiful, harmonious tones that resonate and fade like singing bowls.</p>
-                <div class="app-links">
-                    <span class="coming-soon">Coming to App Store</span>
-                    <a href="/singingorbs/">Support</a>
-                    <a href="/singingorbs/privacy.html">Privacy</a>
-                </div>
-            </div>
-        </div>
     </div>
 
     <footer>
         <p>Contact: <a href="mailto:support@benmadeapps.com">support@benmadeapps.com</a></p>
     </footer>
+
+    <div class="scroll-hint" id="scrollHint">&#8595;</div>
+
+    <script>
+        const scrollHint = document.getElementById('scrollHint');
+        function checkScroll() {
+            const scrolled = window.scrollY;
+            const viewportHeight = window.innerHeight;
+            const fullHeight = document.documentElement.scrollHeight;
+            // Hide if scrolled past first app or near bottom
+            if (scrolled > 100 || scrolled + viewportHeight >= fullHeight - 50) {
+                scrollHint.classList.add('hidden');
+            } else {
+                scrollHint.classList.remove('hidden');
+            }
+        }
+        // Hide immediately if page doesn't need scrolling
+        if (document.documentElement.scrollHeight <= window.innerHeight) {
+            scrollHint.classList.add('hidden');
+        }
+        scrollHint.addEventListener('click', function() {
+            window.scrollBy({ top: window.innerHeight * 0.6, behavior: 'smooth' });
+        });
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('resize', checkScroll);
+    </script>
 </body>
 </html>
