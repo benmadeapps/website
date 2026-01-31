@@ -6,222 +6,359 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <title>Ben Made Apps</title>
     <style>
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
             line-height: 1.6;
-            color: #333;
-            background: #fafafa;
+            color: #1d1d1f;
+            background: #f2f2f7;
+            min-height: 100vh;
         }
-        header {
+
+        /* Header */
+        .hero {
+            background: linear-gradient(180deg, #fafafa 0%, #f2f2f7 100%);
+            padding: 3.5em 2em 2.5em;
             text-align: center;
-            margin-bottom: 3em;
         }
-        h1 {
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5em;
+            margin-bottom: 0.8em;
+        }
+
+        .brand-icon {
+            width: 2.8em;
+            height: 2.8em;
+            background: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+            border-radius: 0.7em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1em;
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0,122,255,0.3);
+        }
+
+        .brand-name {
+            font-size: 1.6em;
+            font-weight: 600;
+            color: #1d1d1f;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 {
             font-size: 2.2em;
-            margin-bottom: 0.2em;
-            color: #1a1a1a;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #1d1d1f;
+            margin-bottom: 0.5em;
+            line-height: 1.3;
         }
-        .tagline {
-            color: #666;
-            font-size: 1.1em;
-            margin-bottom: 0.3em;
+
+        .hero .tagline {
+            font-size: 1.15em;
+            color: #86868b;
+            font-weight: 400;
+            max-width: 500px;
+            margin: 0 auto;
         }
-        .subtitle {
-            color: #888;
+
+        /* Apps Section */
+        .apps-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1em 1.5em 3em;
+        }
+
+        .section-label {
+            font-size: 0.75em;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #86868b;
+            margin-bottom: 1em;
+        }
+
+        .apps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25em;
+        }
+
+        .app {
+            background: #fff;
+            padding: 1.5em;
+            display: flex;
+            gap: 1.5em;
+            align-items: flex-start;
+            border-radius: 16px;
+            border: 1px solid rgba(0,0,0,0.08);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+        }
+
+        .app:hover {
+            border-color: rgba(0,0,0,0.12);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .app-icon {
+            width: 88px;
+            height: 88px;
+            border-radius: 20px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .app-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .app-header {
+            display: flex;
+            align-items: baseline;
+            gap: 0.6em;
+            margin-bottom: 0.4em;
+            flex-wrap: wrap;
+        }
+
+        .app-name {
+            font-size: 1.25em;
+            font-weight: 600;
+            color: #1d1d1f;
+            letter-spacing: -0.01em;
+        }
+
+        .app-name a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .app-name a:hover {
+            color: #007AFF;
+        }
+
+        .app-tagline {
+            font-size: 0.9em;
+            color: #86868b;
+        }
+
+        .app-description {
+            color: #515154;
             font-size: 0.95em;
+            margin-bottom: 1em;
+            line-height: 1.5;
         }
+
+        .app-links {
+            display: flex;
+            gap: 1.2em;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .store-badge {
+            display: block;
+            transition: opacity 0.2s;
+        }
+
+        .store-badge:hover {
+            opacity: 0.7;
+        }
+
+        .store-badge img {
+            display: block;
+            height: 36px;
+        }
+
+        .text-link {
+            font-size: 0.85em;
+            color: #007AFF;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .text-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Scroll Hint */
         .scroll-hint {
             position: fixed;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 50px;
-            height: 50px;
+            width: 44px;
+            height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #666;
-            font-size: 1.5em;
-            background: rgba(255,255,255,0.9);
+            color: #86868b;
+            font-size: 1.3em;
+            background: rgba(255,255,255,0.95);
             border-radius: 50%;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             cursor: pointer;
             animation: bounce 2s infinite;
-            opacity: 1;
             transition: opacity 0.3s;
         }
+
         .scroll-hint:hover {
-            background: #fff;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+            color: #1d1d1f;
         }
+
         .scroll-hint.hidden {
             opacity: 0;
             pointer-events: none;
         }
+
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-8px); }
-            60% { transform: translateX(-50%) translateY(-4px); }
+            40% { transform: translateX(-50%) translateY(-6px); }
+            60% { transform: translateX(-50%) translateY(-3px); }
         }
-        .apps {
-            display: flex;
-            flex-direction: column;
-            gap: 2em;
-        }
-        .app {
-            background: #fff;
-            border-radius: 16px;
-            padding: 1.5em;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            display: flex;
-            gap: 1.5em;
-            align-items: flex-start;
-        }
-        .app-icon {
-            width: 100px;
-            height: 100px;
-            border-radius: 22px;
-            flex-shrink: 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .app-info {
-            flex: 1;
-        }
-        .app-info h2 {
-            margin: 0 0 0.3em 0;
-            font-size: 1.4em;
-        }
-        .app-info h2 a {
-            color: #1a1a1a;
-            text-decoration: none;
-        }
-        .app-info h2 a:hover {
-            color: #007AFF;
-        }
-        .app-tagline {
-            color: #666;
-            margin: 0 0 0.8em 0;
-            font-size: 0.95em;
-        }
-        .app-description {
-            margin: 0 0 1em 0;
-            color: #444;
-        }
-        .app-links {
-            display: flex;
-            gap: 1em;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        .app-links a {
-            color: #007AFF;
-            text-decoration: none;
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2em;
+            color: #86868b;
             font-size: 0.9em;
         }
-        .app-links a:hover {
-            text-decoration: underline;
-        }
-        .store-badge {
-            display: inline-flex;
-            align-items: center;
-        }
-        .store-badge img {
-            display: block;
-        }
-        .store-badge:hover {
-            opacity: 0.8;
-        }
-        .coming-soon {
-            display: inline-block;
-            background: #e8e8e8;
-            color: #666;
-            padding: 0.4em 0.8em;
-            border-radius: 6px;
-            font-size: 0.85em;
-        }
-        footer {
-            margin-top: 3em;
-            padding-top: 2em;
-            border-top: 1px solid #e0e0e0;
-            text-align: center;
-            color: #666;
-        }
+
         footer a {
-            color: #007AFF;
+            color: #515154;
             text-decoration: none;
         }
+
         footer a:hover {
             text-decoration: underline;
         }
-        @media (max-width: 500px) {
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .hero {
+                padding: 2.5em 1.5em 2em;
+            }
+
+            .hero h1 {
+                font-size: 1.6em;
+            }
+
+            .hero .tagline {
+                font-size: 0.95em;
+            }
+
+            .brand-icon {
+                width: 2.2em;
+                height: 2.2em;
+            }
+
+            .brand-name {
+                font-size: 1.3em;
+            }
+
             .app {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
+                padding: 1.5em;
             }
+
+            .app-header {
+                justify-content: center;
+            }
+
             .app-links {
                 justify-content: center;
+            }
+
+            .app-icon {
+                width: 80px;
+                height: 80px;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Ben Made Apps</h1>
-        <p class="tagline">Simple, thoughtful apps for iOS.</p>
-        <p class="subtitle">A data & software engineer's creative outlet, built with AI.</p>
-    </header>
+    <div class="hero">
+        <div class="brand">
+            <div class="brand-icon">B</div>
+            <span class="brand-name">Ben Made Apps</span>
+        </div>
+        <h1>Simple, thoughtful apps for iOS.</h1>
+        <p class="tagline">A data & software engineer's creative outlet, built with AI.</p>
+    </div>
 
-    <div class="apps">
-        <div class="app">
-            <img src="/assets/images/singingorbs-icon.png" alt="Singing Orbs" class="app-icon">
-            <div class="app-info">
-                <h2><a href="/singingorbs/">Singing Orbs</a></h2>
-                <p class="app-tagline">Meditative Sound Spheres.</p>
-                <p class="app-description">Transform your screen into a tranquil sound garden. Trace your finger through glowing orbs and create beautiful, harmonious tones that resonate and fade like singing bowls.</p>
-                <div class="app-links">
-                    <a href="https://apps.apple.com/app/id6758194972" class="store-badge" target="_blank" rel="noopener noreferrer"><img src="/assets/images/app-store-badge.svg" alt="Download on the App Store" height="40"></a>
-                    <a href="/singingorbs/">Support</a>
-                    <a href="/singingorbs/privacy.html">Privacy</a>
+    <div class="apps-section">
+        <div class="section-label">Apps</div>
+        <div class="apps">
+            <div class="app">
+                <img src="/assets/images/singingorbs-icon.png" alt="Singing Orbs" class="app-icon">
+                <div class="app-content">
+                    <div class="app-header">
+                        <span class="app-name"><a href="/singingorbs/">Singing Orbs</a></span>
+                        <span class="app-tagline">Meditative sound spheres</span>
+                    </div>
+                    <p class="app-description">Transform your screen into a tranquil sound garden. Trace your finger through glowing orbs and create harmonious tones that resonate like singing bowls.</p>
+                    <div class="app-links">
+                        <a href="https://apps.apple.com/app/id6758194972" class="store-badge" target="_blank" rel="noopener noreferrer">
+                            <img src="/assets/images/app-store-badge.svg" alt="Download on the App Store">
+                        </a>
+                        <a href="/singingorbs/" class="text-link">Support</a>
+                        <a href="/singingorbs/privacy.html" class="text-link">Privacy</a>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="app">
-            <img src="/assets/images/minesweeper-icon.png" alt="Minesweeper: Pure Logic" class="app-icon">
-            <div class="app-info">
-                <h2><a href="/minesweeper/">Minesweeper: Pure Logic</a></h2>
-                <p class="app-tagline">All skill. No guessing.</p>
-                <p class="app-description">Classic Minesweeper where every puzzle is guaranteed solvable through logic alone. No more 50/50 guesses—just pure deduction.</p>
-                <div class="app-links">
-                    <a href="https://apps.apple.com/app/id6757989194" class="store-badge" target="_blank" rel="noopener noreferrer"><img src="/assets/images/app-store-badge.svg" alt="Download on the App Store" height="40"></a>
-                    <a href="/minesweeper/">Support</a>
-                    <a href="/minesweeper/privacy.html">Privacy</a>
+            <div class="app">
+                <img src="/assets/images/minesweeper-icon.png" alt="Minesweeper: Pure Logic" class="app-icon">
+                <div class="app-content">
+                    <div class="app-header">
+                        <span class="app-name"><a href="/minesweeper/">Minesweeper: Pure Logic</a></span>
+                        <span class="app-tagline">All skill, no guessing</span>
+                    </div>
+                    <p class="app-description">Classic Minesweeper where every puzzle is guaranteed solvable through logic alone. No more 50/50 guesses—just pure deduction.</p>
+                    <div class="app-links">
+                        <a href="https://apps.apple.com/app/id6757989194" class="store-badge" target="_blank" rel="noopener noreferrer">
+                            <img src="/assets/images/app-store-badge.svg" alt="Download on the App Store">
+                        </a>
+                        <a href="/minesweeper/" class="text-link">Support</a>
+                        <a href="/minesweeper/privacy.html" class="text-link">Privacy</a>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="app">
-            <img src="/assets/images/cipherquest-icon.svg" alt="CipherQuest" class="app-icon">
-            <div class="app-info">
-                <h2><a href="/cipherquest/">CipherQuest</a></h2>
-                <p class="app-tagline">Decode the mystery.</p>
-                <p class="app-description">A cryptography puzzle game that challenges you to crack ciphers and unlock secrets. Learn classic encryption techniques while solving intriguing puzzles.</p>
-                <div class="app-links">
-                    <a href="https://apps.apple.com/app/id6757944090" class="store-badge" target="_blank" rel="noopener noreferrer"><img src="/assets/images/app-store-badge.svg" alt="Download on the App Store" height="40"></a>
-                    <a href="/cipherquest/">Support</a>
-                    <a href="/cipherquest/privacy.html">Privacy</a>
+            <div class="app">
+                <img src="/assets/images/cipherquest-icon.svg" alt="CipherQuest" class="app-icon">
+                <div class="app-content">
+                    <div class="app-header">
+                        <span class="app-name"><a href="/cipherquest/">CipherQuest: Descent to Light</a></span>
+                        <span class="app-tagline">Cryptography puzzles</span>
+                    </div>
+                    <p class="app-description">Crack ciphers and unlock secrets across 100 puzzles. Learn classic encryption techniques while unraveling an intriguing mystery.</p>
+                    <div class="app-links">
+                        <a href="https://apps.apple.com/app/id6757944090" class="store-badge" target="_blank" rel="noopener noreferrer">
+                            <img src="/assets/images/app-store-badge.svg" alt="Download on the App Store">
+                        </a>
+                        <a href="/cipherquest/" class="text-link">Support</a>
+                        <a href="/cipherquest/privacy.html" class="text-link">Privacy</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>Contact: <a href="mailto:support@benmadeapps.com">support@benmadeapps.com</a></p>
+        <a href="mailto:support@benmadeapps.com">support@benmadeapps.com</a>
     </footer>
 
     <div class="scroll-hint" id="scrollHint">&#8595;</div>
@@ -232,14 +369,12 @@
             const scrolled = window.scrollY;
             const viewportHeight = window.innerHeight;
             const fullHeight = document.documentElement.scrollHeight;
-            // Hide if scrolled past first app or near bottom
             if (scrolled > 100 || scrolled + viewportHeight >= fullHeight - 50) {
                 scrollHint.classList.add('hidden');
             } else {
                 scrollHint.classList.remove('hidden');
             }
         }
-        // Hide immediately if page doesn't need scrolling
         if (document.documentElement.scrollHeight <= window.innerHeight) {
             scrollHint.classList.add('hidden');
         }
