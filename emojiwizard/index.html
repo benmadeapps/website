@@ -126,10 +126,18 @@
             border-top: 1px solid rgba(255,255,255,0.08);
             font-size: 0.9em;
         }
-        .coming-soon {
-            display: inline-block;
+        .store-badges {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+            flex-wrap: wrap;
             margin-top: 1em;
-            padding: 0.5em 1.2em;
+        }
+        .coming-soon {
+            display: inline-flex;
+            align-items: center;
+            height: 40px;
+            padding: 0 1.2em;
             background: rgba(179,136,255,0.12);
             border: 1px solid rgba(179,136,255,0.25);
             border-radius: 8px;
@@ -138,10 +146,13 @@
             font-weight: 500;
         }
         .store-badge {
-            display: inline-block;
-            margin-top: 1em;
+            display: inline-flex;
             opacity: 0.9;
             transition: opacity 0.2s;
+        }
+        .store-badge img {
+            display: block;
+            height: 40px;
         }
         .store-badge:hover { opacity: 1; }
     </style>
@@ -159,7 +170,12 @@
 
     <p>Cast emoji spells to solve enchanted puzzles in this magical adventure. Journey through four acts of increasingly challenging levels as you master new spells and unravel the mystery of the Emoji Realm.</p>
 
-    <div class="coming-soon">Coming soon to the App Store and Google Play</div>
+    <div class="store-badges">
+        <a href="https://apps.apple.com/app/emoji-wizard/id6758692391" class="store-badge" target="_blank" rel="noopener noreferrer">
+            <img src="/assets/images/app-store-badge.svg" alt="Download on the App Store">
+        </a>
+        <span class="coming-soon">Coming soon to Google Play</span>
+    </div>
 
     <h2>Features</h2>
     <div class="feature-list">
